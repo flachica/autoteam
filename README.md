@@ -1,5 +1,7 @@
 # Proyecto Autoteam
 
+Herramienta para la gestión de reservas de pistas de pádel. Los usuarios pueden registrarse con su teléfono o cuenta de correo y apuntarse a las pistas "abiertas" de la semana. Es una alternativa a la gestión mediante mensajería instantánea y que permite automatizar el cierre de partidos. Además, lleva un riguroso control del saldo
+
 Este proyecto contiene tanto el frontend como el backend para una experiencia de desarrollo más cómoda. Utiliza un contenedor de desarrollo (`devcontainer`) y un espacio de trabajo de Visual Studio Code.
 
 ## Requisitos
