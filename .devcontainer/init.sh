@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 cd /workspaces/autoteam
-git clone git@github.com:flachica/autoteam-front.git -b develop
-git clone git@github.com:flachica/autoteam-back.git -b develop
+git clone https://github.com/flachica/autoteam-front.git -b develop
+git clone https://github.com/flachica/autoteam-back.git -b develop
 cd autoteam-back
 npm install
 cd ..
