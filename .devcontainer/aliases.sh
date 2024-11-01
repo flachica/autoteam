@@ -1,0 +1,13 @@
+alias gd='git difftool $2'
+alias gs='git status'
+alias gc='git commit'
+alias ga='git add $2'
+alias gl='git log --graph'
+alias gr='git remote -v'
+alias gb="git branch -vva"
+alias gf="git fetch -ap"
+alias gp="git push"
+alias gpl="git pull"
+alias gcd="git checkout develop"
+alias ucommit="git reset --soft HEAD~1"
+alias gco="git checkout"

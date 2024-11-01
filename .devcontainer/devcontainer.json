@@ -1,0 +1,26 @@
+{
+    "name": "Back",
+    "dockerFile": "Dockerfile",
+    "context": ".",
+    "appPort": [3000, 4000, 5000],
+    "remoteUser": "node",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {},
+        "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {},
+        "ghcr.io/devcontainers/features/node:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "terminal.integrated.profiles.linux": {
+                    "zsh": {
+                        "path": "/bin/zsh"
+                    }
+                }
+            },
+            "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"]
+        }
+    },
+    "postCreateCommand": "/workspaces/autoteam/.devcontainer/init.sh"
+}

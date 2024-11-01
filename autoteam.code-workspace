@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "autoteam-back"
+		},
+		{
+			"path": "autoteam-front"
+		},
+		{
+			"path": ".devcontainer"
+		},
+		{
+			"path": "sqlite-gui"
+		},
+		{
+			"path": "."
+		}
+	]
+}

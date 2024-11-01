@@ -1,0 +1,51 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Next.js: Dev",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/autoteam-front/node_modules/next/dist/bin/next",
+            "args": ["dev", "-p", "4000"],
+            "runtimeArgs": ["--inspect=9230"],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "sourceMaps": true,
+            "skipFiles": ["<node_internals>/**"],
+            "cwd": "${workspaceFolder}/autoteam-front"
+        },
+        {
+            "name": "API Debug",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["run", "start:debug", "--", "--inspect=9229"],
+            "skipFiles": ["<node_internals>/**"],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "cwd": "${workspaceFolder}/autoteam-back"
+        },
+        {
+            "name": "Next.js: Build",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/node_modules/next/dist/bin/next",
+            "args": ["build"],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "sourceMaps": true,
+            "skipFiles": ["<node_internals>/**"]
+        },
+        {
+            "name": "Next.js: Start",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/node_modules/next/dist/bin/next",
+            "args": ["start"],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "sourceMaps": true,
+            "skipFiles": ["<node_internals>/**"]
+        }
+    ]
+}
