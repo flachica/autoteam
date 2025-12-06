@@ -2,7 +2,7 @@
     "name": "Back",
     "dockerFile": "Dockerfile",
     "context": ".",
-    "appPort": [3000, 4000, 5000],
+    "forwardPorts": [3000, 4000, 5000],
     "remoteUser": "node",
     "features": {
         "ghcr.io/devcontainers/features/common-utils:2": {},

@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Next.js: Dev",
+            "name": "Front dev",
             "type": "node",
             "request": "launch",
             "program": "${workspaceFolder}/autoteam-front/node_modules/next/dist/bin/next",
@@ -15,7 +15,7 @@
             "cwd": "${workspaceFolder}/autoteam-front"
         },
         {
-            "name": "API Debug",
+            "name": "Back dev",
             "type": "node",
             "request": "launch",
             "runtimeExecutable": "npm",
@@ -26,7 +26,7 @@
             "cwd": "${workspaceFolder}/autoteam-back"
         },
         {
-            "name": "Next.js: Build",
+            "name": "Build front",
             "type": "node",
             "request": "launch",
             "program": "${workspaceFolder}/node_modules/next/dist/bin/next",
@@ -37,7 +37,7 @@
             "skipFiles": ["<node_internals>/**"]
         },
         {
-            "name": "Next.js: Start",
+            "name": "Back start",
             "type": "node",
             "request": "launch",
             "program": "${workspaceFolder}/node_modules/next/dist/bin/next",
