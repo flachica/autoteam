@@ -7,59 +7,57 @@ Herramienta para la gestión de reservas de pistas de pádel.
 - **Frontend**: `/root/proyectos/autoteam-front` (Next.js)
 - **Database GUI**: `/root/proyectos/sqlite-gui`
 
-## Gestión en Producción (PM2)
+## Gestión en Producción (Systemd)
 
-Este proyecto utiliza **PM2** para gestionar los procesos en producción.
+Este proyecto utiliza **Systemd** nativo de Linux para la gestión de servicios, eliminando capas de complejidad como PM2.
 
-### Estado de los servicios
-Ver el estado de todos los procesos:
+### Comandos de Control Rápidos
+En el directorio `/root/proyectos/` existen scripts para facilitar las tareas comunes:
+
+- **Reconstruir y Desplegar**:
+  ```bash
+  /root/proyectos/build.sh
+  ```
+  *Detiene servicios, actualiza dependencias, construye backend y frontend (con optimización de memoria) y reinicia todo.*
+
+- **Iniciar Servicios**:
+  ```bash
+  /root/proyectos/start-all.sh
+  ```
+
+- **Detener Servicios**:
+  ```bash
+  /root/proyectos/stop-all.sh
+  ```
+
+### Gestión Manual con Systemctl
+Puedes controlar cada servicio individualmente usando los comandos estándar de Linux:
+
 ```bash
-pm2 list
+# Estado
+systemctl status autoteam-front
+systemctl status autoteam-back
+systemctl status sqlite-gui
+
+# Reiniciar
+systemctl restart autoteam-front
+
+# Ver logs
+journalctl -u autoteam-front -f
+journalctl -u autoteam-back -f
 ```
 
-### Logs
-Ver logs en tiempo real:
-```bash
-pm2 logs
-```
-Ver logs de un servicio específico:
-```bash
-pm2 logs autoteam-front
-pm2 logs autoteam-back
-```
+### Configuración de Red (Nginx)
+El servidor utiliza Nginx como reverse proxy:
+- **Frontend**: https://padeleros.vip (Proxy a localhost:4000)
+- **Backend API**: https://padeleros.vip:8443 (Proxy a localhost:3000)
 
-### Desplegar cambios
-Para actualizar la aplicación después de subir cambios al servidor:
+La configuración de Nginx se encuentra en este repositorio en el archivo `nginx.conf` para referencia.
 
-1. **Backend**:
-   ```bash
-   cd /root/proyectos/autoteam-back
-   npm install
-   npm run build
-   pm2 restart autoteam-back
-   ```
+### Optimización de Memoria
+El servidor tiene recursos limitados (1GB RAM).
+- El script `build.sh` aplica `NODE_OPTIONS="--max-old-space-size=1536"` para aprovechar el SWAP durante la compilación.
+- Los servicios en tiempo de ejecución tienen límites de memoria configurados en sus unidades de Systemd.
 
-2. **Frontend**:
-   ```bash
-   cd /root/proyectos/autoteam-front
-   npm install
-   npm run build
-   pm2 restart autoteam-front
-   ```
 
-### Reiniciar todo
-```bash
-pm2 restart all
-```
-
-### Puertos
-- **Frontend**: 4000
-- **Backend**: 3000
-- **SQLite GUI**: 5000 (interfaz) / 8080 (socket)
-
-## Autoinicio
-La persistencia tras reinicios está configurada mediante PM2. Si realizas cambios en la lista de procesos (añadir/quitar), ejecuta:
-```bash
-pm2 save
-```
-Esto guardará la configuración actual para que arranque automáticamente al iniciar el servidor.
+Revisa el nginx.conf para la configuración de red.
